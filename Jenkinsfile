@@ -1,3 +1,4 @@
+
 pipeline {
 
     agent any
@@ -28,11 +29,12 @@ pipeline {
                 bat 'npx playwright test'
             }
         }
-        post {
+    }
+
+    post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**', 
+            archiveArtifacts artifacts: 'playwright-report/**',
                              allowEmptyArchive: true
         }
-
     }
 }
