@@ -2,6 +2,14 @@
 pipeline {
 
     agent any
+    parameters
+    {
+        choice(
+            name:'Test_Module',
+            choices:['Login','Employee'],
+            description:'Login'
+        )
+    }
 
     stages {
 
@@ -26,8 +34,16 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'npx playwright test'
-            }
+                script {
+                    if (params.Test_Module == 'Login') {
+                        bat 'npx playwright test tests/demo/login.spec.js'
+                    }
+                    else if (params.Test_Module == 'Employee') {
+                        bat 'npx playwright test tests/demo/emp.spec.js'
+                    }
+                    else {
+                        bat 'npx playwright test'
+                    }
         }
     }
 

@@ -37,7 +37,7 @@ export default defineConfig({
     video:'on',
     launchOptions:
     {
-      slowMo:1000,
+      slowMo:500,
     }
   },
 
