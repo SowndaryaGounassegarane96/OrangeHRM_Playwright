@@ -4,7 +4,7 @@ pipeline {
     agent any
     parameters
     {
-        String(
+        string(
            name: 'Test_Module',
         defaultValue: 'Login,Employee',
         description: 'Login,Employee'
