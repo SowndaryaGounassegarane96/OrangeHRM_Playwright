@@ -1,0 +1,17 @@
+[
+    {
+        "testCase":"Add the Employeee",
+        "firstname":"Brook",
+        "middlename":"Joy",
+        "lastname":"Smith",
+        "expected":"added"
+    },
+    {
+        "testCase":"last name need to be filled",
+        "firstname":"Tim",
+        "middlename":"David",
+        "lastname":"",
+        "expected":"not added"
+
+    }
+]

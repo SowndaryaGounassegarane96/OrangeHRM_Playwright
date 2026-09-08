@@ -7,6 +7,9 @@ exports.LoginPage = class LoginPage
         this.username = page.getByRole('textbox', { name: 'Username' });
         this.password = page.getByRole('textbox', { name: 'Password' });
         this.clickLogin = page.getByRole('button', { name: 'Login' });
+       this.dasboardPage =  page.getByRole('heading', { name: 'Dashboard' });
+
+
        this.invalidCredentials = page.getByRole('alert').locator('div').filter({ hasText: /^Invalid credentials$/ });
 
     }
@@ -19,5 +22,6 @@ exports.LoginPage = class LoginPage
         await this.username.fill(username);
         await this.password.fill(password);
         await this.clickLogin.click();
+    
     }
 }
