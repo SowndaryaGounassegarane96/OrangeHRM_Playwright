@@ -4,12 +4,10 @@ pipeline {
     agent any
     parameters
     {
-        extendedChoice(
-            name:'Test_Module',
-            type:'PT_Checkbox',
-             multiSelectDelimiter: ',',
-        value: 'Login,Employee',
-        description: 'Login','Employee'
+        String(
+           name: 'Test_Module',
+        defaultValue: 'Login,Employee',
+        description: 'Login,Employee'
         )
     }
 
