@@ -4,10 +4,12 @@ pipeline {
     agent any
     parameters
     {
-        choice(
+        extendedChoice(
             name:'Test_Module',
-            choices:['Login','Employee'],
-            description:'Login'
+            type:'PT_Checkbox',
+             multiSelectDelimiter: ',',
+        value: 'Login,Employee',
+        description: 'Login','Employee'
         )
     }
 
@@ -35,12 +37,14 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    if (params.Test_Module == 'Login') {
-                        bat 'npx playwright test tests/demo/login.spec.js'
-                    }
-                    else if (params.Test_Module == 'Employee') {
-                        bat 'npx playwright test tests/demo/emp.spec.js'
-                    }
+                   if (params.Test_Module.contains('Login')) {
+                bat 'npx playwright test tests/demo/login.spec.js'
+            }
+
+            if (params.Test_Module.contains('Employee')) {
+                bat 'npx playwright test tests/demo/emp.spec.js'
+            }
+
                     else {
                         bat 'npx playwright test'
                     }
